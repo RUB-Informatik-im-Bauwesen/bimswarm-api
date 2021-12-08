@@ -1,0 +1,862 @@
+﻿{
+    "openapi": "3.0.0",
+    "servers": [{
+        "url": "https://bmwi-swarm-dev03.test-server.ag",
+        "description": "BIMSWARM Development Server (adesso)",
+        "variables": {}
+    }],
+    "info": {
+        "version": "0.1",
+        "title": "BIMSWARM Toolchain Service",
+        "description": "Der BIMSWARM-Composer ermöglicht die Erstellung, Speicherung und Verteilung individueller Prozessketten mit Anwender-bezogenen Bau-IT-Produktkombinationen, welche im Folgenden als 'Toolchain' bezeichnet werden. Über den Composer können Toolchains vorkonfiguriert und anschließend immer wieder verwendet werden. Im Folgenden werden entsprechende Routen für die Nutzung von im Composer erstellter Toolchains in externen Anwendungen in Zusammenspiel mit einem openCDE-konformen Datenspeicher spezifiziert.",
+        "termsOfService": "https://www.bimswarm.de/",
+        "contact": {
+            "name": "Philipp Hagedorn (Ruhr-Universität Bochum), Joshua Gauger (adesso SE)",
+            "url": "http://www.bimswarm.de",
+            "email": "contact@bimswarm.de"
+        },
+        "license": {
+            "name": "Attribution 4.0 International (CC BY 4.0)"
+        }
+    },
+    "paths": {
+        "/proxy/api/v0/toolchainservice/toolchain/instance/product/{productId}/status/=pending": {
+            "get": {
+                "summary": "[1] GetToolchainsFromProductAndUserAndActionRequired",
+                "description": "App A fragt alle Toolchaininstanzen von der BIMSWARM T\noolchain-API ab, die eine Relation zu App A und zu dem\nNutzer in App A haben und den Status \"PENDING\"\nbesitzen.\n* productId ist ein eindeutiger Bezeichner des\nProduktes (ID aus dem product service)",
+                "operationId": "[1]GetToolchainsFromProductAndUserAndActionRequired",
+                "parameters": [{
+                    "$ref": "#/components/parameters/productId"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "[1] GetToolchainsFromProductAndUserAndActionRequired",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/200"
+                                    }
+                                },
+                                "example": [{
+                                        "id": 333,
+                                        "relTemplate": 332,
+                                        "type": "TOOLCHAIN",
+                                        "toolchainMetadataId": 133,
+                                        "userId": 6,
+                                        "items": [{
+                                                "id": 1890,
+                                                "xmlId": null,
+                                                "status": "SUCCESS",
+                                                "type": "STARTITEM",
+                                                "productId": null,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [
+                                                    1891
+                                                ],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            },
+                                            {
+                                                "id": 1892,
+                                                "xmlId": null,
+                                                "status": "PENDING",
+                                                "type": "ACTIVITYITEM",
+                                                "productId": 13,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [
+                                                    1893
+                                                ],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            },
+                                            {
+                                                "id": 1891,
+                                                "xmlId": null,
+                                                "status": "PENDING",
+                                                "type": "ACTIVITYITEM",
+                                                "productId": 154,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [
+                                                    1892
+                                                ],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            },
+                                            {
+                                                "id": 1893,
+                                                "xmlId": null,
+                                                "status": "PENDING",
+                                                "type": "ENDITEM",
+                                                "productId": null,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            }
+                                        ],
+                                        "container": {
+                                            "id": 173,
+                                            "externalId": "75fc52e9-bbaf-4275-9921-ed277f4c3a10",
+                                            "baseUrl": "http://bmwi-swarm-dev03.test-server.ag:8099/containers/75fc52e9-bbaf-4275-9921-ed277f4c3a10",
+                                            "content": []
+                                        },
+                                        "deleted": false
+                                    },
+                                    {
+                                        "id": 334,
+                                        "relTemplate": 332,
+                                        "type": "TOOLCHAIN",
+                                        "toolchainMetadataId": 133,
+                                        "userId": 6,
+                                        "items": [{
+                                                "id": 1896,
+                                                "xmlId": null,
+                                                "status": "PENDING",
+                                                "type": "ACTIVITYITEM",
+                                                "productId": 13,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [
+                                                    1897
+                                                ],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            },
+                                            {
+                                                "id": 1897,
+                                                "xmlId": null,
+                                                "status": "PENDING",
+                                                "type": "ENDITEM",
+                                                "productId": null,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            },
+                                            {
+                                                "id": 1894,
+                                                "xmlId": null,
+                                                "status": "SUCCESS",
+                                                "type": "STARTITEM",
+                                                "productId": null,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [
+                                                    1895
+                                                ],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            },
+                                            {
+                                                "id": 1895,
+                                                "xmlId": null,
+                                                "status": "PENDING",
+                                                "type": "ACTIVITYITEM",
+                                                "productId": 154,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [
+                                                    1896
+                                                ],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            }
+                                        ],
+                                        "container": {
+                                            "id": 174,
+                                            "externalId": "ec98008a-e33d-47e1-bb7d-198bfcb77459",
+                                            "baseUrl": "http://bmwi-swarm-dev03.test-server.ag:8099/containers/ec98008a-e33d-47e1-bb7d-198bfcb77459",
+                                            "content": []
+                                        },
+                                        "deleted": false
+                                    },
+                                    {
+                                        "id": 335,
+                                        "relTemplate": 332,
+                                        "type": "TOOLCHAIN",
+                                        "toolchainMetadataId": 133,
+                                        "userId": 6,
+                                        "items": [{
+                                                "id": 1901,
+                                                "xmlId": null,
+                                                "status": "PENDING",
+                                                "type": "ENDITEM",
+                                                "productId": null,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            },
+                                            {
+                                                "id": 1899,
+                                                "xmlId": null,
+                                                "status": "PENDING",
+                                                "type": "ACTIVITYITEM",
+                                                "productId": 154,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [
+                                                    1900
+                                                ],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            },
+                                            {
+                                                "id": 1900,
+                                                "xmlId": null,
+                                                "status": "PENDING",
+                                                "type": "ACTIVITYITEM",
+                                                "productId": 13,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [
+                                                    1901
+                                                ],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            },
+                                            {
+                                                "id": 1898,
+                                                "xmlId": null,
+                                                "status": "SUCCESS",
+                                                "type": "STARTITEM",
+                                                "productId": null,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [
+                                                    1899
+                                                ],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            }
+                                        ],
+                                        "container": {
+                                            "id": 175,
+                                            "externalId": "478f77e8-8b4d-4f51-8a33-b8c02fdd2f66",
+                                            "baseUrl": "http://bmwi-swarm-dev03.test-server.ag:8099/containers/478f77e8-8b4d-4f51-8a33-b8c02fdd2f66",
+                                            "content": []
+                                        },
+                                        "deleted": false
+                                    },
+                                    {
+                                        "id": 336,
+                                        "relTemplate": 332,
+                                        "type": "TOOLCHAIN",
+                                        "toolchainMetadataId": 133,
+                                        "userId": 6,
+                                        "items": [{
+                                                "id": 1902,
+                                                "xmlId": null,
+                                                "status": "SUCCESS",
+                                                "type": "STARTITEM",
+                                                "productId": null,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [
+                                                    1903
+                                                ],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            },
+                                            {
+                                                "id": 1904,
+                                                "xmlId": null,
+                                                "status": "PENDING",
+                                                "type": "ACTIVITYITEM",
+                                                "productId": 13,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [
+                                                    1905
+                                                ],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            },
+                                            {
+                                                "id": 1903,
+                                                "xmlId": null,
+                                                "status": "PENDING",
+                                                "type": "ACTIVITYITEM",
+                                                "productId": 154,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [
+                                                    1904
+                                                ],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            },
+                                            {
+                                                "id": 1905,
+                                                "xmlId": null,
+                                                "status": "PENDING",
+                                                "type": "ENDITEM",
+                                                "productId": null,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            }
+                                        ],
+                                        "container": {
+                                            "id": 176,
+                                            "externalId": "7ffa1744-7c5d-410d-a108-b1aa215c1e76",
+                                            "baseUrl": "http://bmwi-swarm-dev03.test-server.ag:8099/containers/7ffa1744-7c5d-410d-a108-b1aa215c1e76",
+                                            "content": []
+                                        },
+                                        "deleted": false
+                                    },
+                                    {
+                                        "id": 496,
+                                        "relTemplate": 495,
+                                        "type": "TOOLCHAIN",
+                                        "toolchainMetadataId": 184,
+                                        "userId": 48,
+                                        "items": [{
+                                                "id": 2610,
+                                                "xmlId": null,
+                                                "status": "PENDING",
+                                                "type": "ENDITEM",
+                                                "productId": null,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            },
+                                            {
+                                                "id": 2608,
+                                                "xmlId": null,
+                                                "status": "PENDING",
+                                                "type": "ACTIVITYITEM",
+                                                "productId": 159,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": [
+                                                    381
+                                                ],
+                                                "successors": [
+                                                    2609
+                                                ],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            },
+                                            {
+                                                "id": 2604,
+                                                "xmlId": null,
+                                                "status": "SUCCESS",
+                                                "type": "STARTITEM",
+                                                "productId": null,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [
+                                                    2605
+                                                ],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            },
+                                            {
+                                                "id": 2607,
+                                                "xmlId": null,
+                                                "status": "PENDING",
+                                                "type": "FORKITEM",
+                                                "productId": null,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [
+                                                    2608,
+                                                    2611
+                                                ],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            },
+                                            {
+                                                "id": 2606,
+                                                "xmlId": null,
+                                                "status": "PENDING",
+                                                "type": "ACTIVITYITEM",
+                                                "productId": 71,
+                                                "outputFormatTypeDtos": [{
+                                                        "id": null,
+                                                        "outputContentId": 381,
+                                                        "formatTypeId": 1
+                                                    },
+                                                    {
+                                                        "id": null,
+                                                        "outputContentId": 380,
+                                                        "formatTypeId": 1
+                                                    }
+                                                ],
+                                                "inputContentId": null,
+                                                "successors": [
+                                                    2607
+                                                ],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            },
+                                            {
+                                                "id": 2609,
+                                                "xmlId": null,
+                                                "status": "PENDING",
+                                                "type": "JOINITEM",
+                                                "productId": null,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [
+                                                    2610
+                                                ],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            },
+                                            {
+                                                "id": 2605,
+                                                "xmlId": null,
+                                                "status": "PENDING",
+                                                "type": "ACTIVITYITEM",
+                                                "productId": 154,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": null,
+                                                "successors": [
+                                                    2606
+                                                ],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            },
+                                            {
+                                                "id": 2611,
+                                                "xmlId": null,
+                                                "status": "PENDING",
+                                                "type": "ACTIVITYITEM",
+                                                "productId": 153,
+                                                "outputFormatTypeDtos": null,
+                                                "inputContentId": [
+                                                    380
+                                                ],
+                                                "successors": [
+                                                    2609
+                                                ],
+                                                "toolchainItemMetadataDto": null,
+                                                "associatedPTGS": null
+                                            }
+                                        ],
+                                        "container": {
+                                            "id": 285,
+                                            "externalId": "341c97a4-fe3a-461f-8225-639763f7efea",
+                                            "baseUrl": "http://bmwi-swarm-dev03.test-server.ag:8099/containers/341c97a4-fe3a-461f-8225-639763f7efea",
+                                            "content": [{
+                                                    "id": 380,
+                                                    "externalId": "f7d18e58-4f53-4937-b39d-efbebe01e341",
+                                                    "filename": "OcdeContainer:Workflow:null"
+                                                },
+                                                {
+                                                    "id": 381,
+                                                    "externalId": "10dd9418-ae19-46c6-928e-90660cab39b7",
+                                                    "filename": "OcdeContainer:Workflow:null"
+                                                }
+                                            ]
+                                        },
+                                        "deleted": false
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/proxy/api/v0/toolchainservice/toolchainitem/{itemId}/status": {
+            "put": {
+                "summary": "[2] [6] UpdateToolchainItemStatus",
+                "description": "App A postet Status „WORKING\" an die BIMSWARM Tool\nchain-API\n* Die itemId muss hier für das Produkt aus einer der\nin Abfrage 1 ausgewählten Toolchaininstanz\nangegeben werden.\n* Der Status muss ein gültiger Status aus der\nEnumeration der ItemStatus sein. An dieser Stelle\nmuss gemäß Statusübergänge \"WORKING\"\ngesendet werden.",
+                "operationId": "[2][6]UpdateToolchainItemStatus",
+                "parameters": [{
+                    "$ref": "#/components/parameters/itemId"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "[2] [6] UpdateToolchainItemStatus",
+                        "content": {
+                            "text/plain;charset=UTF-8": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "description": "App A postet Status „WORKING\" an die BIMSWARM Tool\nchain-API\n* Die itemId muss hier für das Produkt aus einer der\nin Abfrage 1 ausgewählten Toolchaininstanz\nangegeben werden.\n* Der Status muss ein gültiger Status aus der\nEnumeration der ItemStatus sein. An dieser Stelle\nmuss gemäß Statusübergänge \"WORKING\"\ngesendet werden.",
+                    "required": true,
+                    "content": {
+                        "text/plain": {
+                            "schema": {
+                                "type": "string",
+                                "example": "\"PENDING\" / \"SUCCES\" / \"WORKING\" / \"FAILED\""
+                            },
+                            "example": "\"PENDING\" / \"SUCCES\" / \"WORKING\" / \"FAILED\""
+                        }
+                    }
+                }
+            }
+        },
+        "/proxy/api/v0/toolchainservice/ocdecontent/{ocdeContentId}": {
+            "get": {
+                "summary": "[3] getOcdeContentDetails",
+                "description": "App A fragt alle ContentIDs von der BIMSWARM\nOpenCDE ab\n* die ocdeContentIds werden im ActivityItem für\njeden eingehenden und ausgehenden Datenfluss\nhinterlegt. Die Abfrage der OcdeContents liefert die\nfür die Dateiübertragung relevante externe ID\nzurück. Diese wird für die Abfragen 4 und 5\nbenötigt.",
+                "operationId": "[3]getOcdeContentDetails",
+                "parameters": [{
+                    "$ref": "#/components/parameters/ocdeContentId"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "[3] getOcdeContentDetails",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/200"
+                                },
+                                "example": {
+                                    "id": 392,
+                                    "externalId": "26137151-ee05-49af-ab3e-f2d7b5e0ebc5",
+                                    "filename": "OcdeContainer:RUB Toolchain:null"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cde/containers/{containerId}/contents/{contentId}/attachment": {
+            "get": {
+                "summary": "[4] getAttachmentFromOcdeContent",
+                "description": "App A führt GET auf der BIMSWARM OpenCDE aus und\nerhält somit die nötigen Eingangsdateien\n* Die ContainerID ist in der Toolchaininstanz\nhinterlegt.\n* Die contentID entstammt aus der Abfrage 3.",
+                "operationId": "[4]getAttachmentFromOcdeContent",
+                "parameters": [{
+                        "$ref": "#/components/parameters/containerId"
+                    },
+                    {
+                        "$ref": "#/components/parameters/contentId"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "[4] getAttachmentFromOcdeContent",
+                        "content": {
+                            "text/plain; charset=utf-8": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "[5] postAttachmentToOcdeContent",
+                "description": "App A postet Ausgangsdateien in die jeweils vorbereiteten\nContents auf der BIMSWARM OpenCDE\n* Die ContainerID ist in der Toolchaininstanz\nhinterlegt.\n* Die contentID entstammt aus der Abfrage 3.",
+                "operationId": "[5]postAttachmentToOcdeContent",
+                "parameters": [{
+                        "name": "containerId",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string",
+                            "example": "containerId"
+                        }
+                    },
+                    {
+                        "name": "contentId",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string",
+                            "example": "contentId"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    },
+                    "201": {
+                        "description": "[5] postAttachmentToOcdeContent",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/201"
+                                },
+                                "example": {
+                                    "selfUrl": "http://127.0.0.1:8099/containers/6698cacb-b36c-4250-8d17-bb707e450e40/contents/389f431a-786e-437d-acd9-4b22fad68d74/attachment",
+                                    "timestamp": "2021-07-05T14:31:52.592418",
+                                    "userid": "6",
+                                    "container_eid": "6698cacb-b36c-4250-8d17-bb707e450e40",
+                                    "content_eid": "389f431a-786e-437d-acd9-4b22fad68d74",
+                                    "payload": {
+                                        "filename": "LoD1_379_5699_1_NW.gml",
+                                        "size": 690580
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "description": "App A postet Ausgangsdateien in die jeweils vorbereiteten\nContents auf der BIMSWARM OpenCDE\n* Die ContainerID ist in der Toolchaininstanz\nhinterlegt.\n* Die contentID entstammt aus der Abfrage 3.",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "file"
+                                ],
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            },
+                            "example": [{
+                                "key": "file",
+                                "type": "file",
+                                "src": []
+                            }]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearer": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        },
+        "parameters": {
+            "productId": {
+                "name": "productId",
+                "in": "path",
+                "required": true,
+                "style": "simple",
+                "schema": {
+                    "type": "string",
+                    "example": "productId"
+                }
+            },
+            "itemId": {
+                "name": "itemId",
+                "in": "path",
+                "required": true,
+                "style": "simple",
+                "schema": {
+                    "type": "string",
+                    "example": "itemId"
+                }
+            },
+            "ocdeContentId": {
+                "name": "ocdeContentId",
+                "in": "path",
+                "required": true,
+                "style": "simple",
+                "schema": {
+                    "type": "string",
+                    "example": "ocdeContentId"
+                }
+            },
+            "containerId": {
+                "name": "containerId",
+                "in": "path",
+                "required": true,
+                "style": "simple",
+                "schema": {
+                    "type": "string",
+                    "example": "containerId"
+                }
+            },
+            "contentId": {
+                "name": "contentId",
+                "in": "path",
+                "required": true,
+                "style": "simple",
+                "schema": {
+                    "type": "string",
+                    "example": "contentId"
+                }
+            }
+        },
+        "schemas": {
+            "200": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer",
+                            "description": "",
+                            "default": 333
+                        },
+                        "relTemplate": {
+                            "type": "integer",
+                            "description": "",
+                            "default": 332
+                        },
+                        "type": {
+                            "type": "string",
+                            "description": "",
+                            "default": "TOOLCHAIN"
+                        },
+                        "toolchainMetadataId": {
+                            "type": "integer",
+                            "description": "",
+                            "default": 133
+                        },
+                        "userId": {
+                            "type": "integer",
+                            "description": "",
+                            "default": 6
+                        },
+                        "items": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "description": "",
+                                        "default": 1890
+                                    },
+                                    "xmlId": {},
+                                    "status": {
+                                        "type": "string",
+                                        "description": "",
+                                        "default": "SUCCESS"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "description": "",
+                                        "default": "STARTITEM"
+                                    },
+                                    "productId": {},
+                                    "outputFormatTypeDtos": {},
+                                    "inputContentId": {},
+                                    "successors": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer",
+                                            "description": "",
+                                            "default": 1891
+                                        }
+                                    },
+                                    "toolchainItemMetadataDto": {},
+                                    "associatedPTGS": {}
+                                }
+                            }
+                        },
+                        "container": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer",
+                                    "description": "",
+                                    "default": 173
+                                },
+                                "externalId": {
+                                    "type": "string",
+                                    "description": "",
+                                    "default": "75fc52e9-bbaf-4275-9921-ed277f4c3a10"
+                                },
+                                "baseUrl": {
+                                    "type": "string",
+                                    "description": "",
+                                    "default": "http://bmwi-swarm-dev03.test-server.ag:8099/containers/75fc52e9-bbaf-4275-9921-ed277f4c3a10"
+                                },
+                                "content": {
+                                    "type": "array",
+                                    "items": {}
+                                }
+                            }
+                        },
+                        "deleted": {}
+                    }
+                }
+            },
+            "201": {
+                "type": "object",
+                "properties": {
+                    "selfUrl": {
+                        "type": "string",
+                        "description": "",
+                        "default": "http://127.0.0.1:8099/containers/6698cacb-b36c-4250-8d17-bb707e450e40/contents/389f431a-786e-437d-acd9-4b22fad68d74/attachment"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "description": "",
+                        "default": "2021-07-05T14:31:52.592418"
+                    },
+                    "userid": {
+                        "type": "string",
+                        "description": "",
+                        "default": "6"
+                    },
+                    "container_eid": {
+                        "type": "string",
+                        "description": "",
+                        "default": "6698cacb-b36c-4250-8d17-bb707e450e40"
+                    },
+                    "content_eid": {
+                        "type": "string",
+                        "description": "",
+                        "default": "389f431a-786e-437d-acd9-4b22fad68d74"
+                    },
+                    "payload": {
+                        "type": "object",
+                        "properties": {
+                            "filename": {
+                                "type": "string",
+                                "description": "",
+                                "default": "LoD1_379_5699_1_NW.gml"
+                            },
+                            "size": {
+                                "type": "integer",
+                                "description": "",
+                                "default": 690580
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "security": [{
+            "bearer": []
+        },
+        {
+            "bearer": []
+        },
+        {
+            "bearer": []
+        },
+        {
+            "bearer": []
+        },
+        {
+            "bearer": []
+        }
+    ],
+    "tags": [],
+    "externalDocs": {
+        "url": "https://www.bimswarm.de/downloads/",
+        "description": "Dokumentation"
+    },
+    "warnings": []
+}
