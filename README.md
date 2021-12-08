@@ -3,3 +3,4 @@ The BIMSWARM API enables interaction with individual process chains with user-re
 
 # overview
 
+![API overview](/docs/bimswarm.png "API overview")

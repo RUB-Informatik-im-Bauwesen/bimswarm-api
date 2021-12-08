@@ -6,9 +6,9 @@
         "variables": {}
     }],
     "info": {
-        "version": "0.1",
-        "title": "BIMSWARM Toolchain Service",
-        "description": "Der BIMSWARM-Composer ermöglicht die Erstellung, Speicherung und Verteilung individueller Prozessketten mit Anwender-bezogenen Bau-IT-Produktkombinationen, welche im Folgenden als 'Toolchain' bezeichnet werden. Über den Composer können Toolchains vorkonfiguriert und anschließend immer wieder verwendet werden. Im Folgenden werden entsprechende Routen für die Nutzung von im Composer erstellter Toolchains in externen Anwendungen in Zusammenspiel mit einem openCDE-konformen Datenspeicher spezifiziert.",
+        "version": "0.2",
+        "title": "BIMSWARM Toolchain API",
+        "description": "The BIMSWARM API enables interaction with individual process chains with user-related construction IT product combinations, which are referred to as 'toolchains'. Toolchains can be preconfigured via the composer on the BIMSWARM platform and subsequently used again and again. Corresponding API routes are specified for the use of toolchains created in the Composer in external applications in interaction with an openCDE-compliant data store in openAPI. For further information, please visit www.bimswarm.de",
         "termsOfService": "https://www.bimswarm.de/",
         "contact": {
             "name": "Philipp Hagedorn (Ruhr-Universität Bochum), Joshua Gauger (adesso SE)",
@@ -23,7 +23,7 @@
         "/proxy/api/v0/toolchainservice/toolchain/instance/product/{productId}/status/=pending": {
             "get": {
                 "summary": "[1] GetToolchainsFromProductAndUserAndActionRequired",
-                "description": "App A fragt alle Toolchaininstanzen von der BIMSWARM T\noolchain-API ab, die eine Relation zu App A und zu dem\nNutzer in App A haben und den Status \"PENDING\"\nbesitzen.\n* productId ist ein eindeutiger Bezeichner des\nProduktes (ID aus dem product service)",
+                "description": "App A queries all toolchain instances from the BIMSWARM T\noolchain API that have a relation to App A and to the user in App A and have the status \"PENDING\"\n.\n* productId is a unique identifier of the product (ID from the product service).",
                 "operationId": "[1]GetToolchainsFromProductAndUserAndActionRequired",
                 "parameters": [{
                     "$ref": "#/components/parameters/productId"
@@ -475,7 +475,7 @@
         "/proxy/api/v0/toolchainservice/toolchainitem/{itemId}/status": {
             "put": {
                 "summary": "[2] [6] UpdateToolchainItemStatus",
-                "description": "App A postet Status „WORKING\" an die BIMSWARM Tool\nchain-API\n* Die itemId muss hier für das Produkt aus einer der\nin Abfrage 1 ausgewählten Toolchaininstanz\nangegeben werden.\n* Der Status muss ein gültiger Status aus der\nEnumeration der ItemStatus sein. An dieser Stelle\nmuss gemäß Statusübergänge \"WORKING\"\ngesendet werden.",
+                "description": "App A posts status \"WORKING\" to the BIMSWARM tool\nchain API\n* The itemId must be specified here for the product from one of the toolchain instances\nselected in request 1.\n* The status must be a valid status from the item status enumeration. At this point\nmust be sent according to status transitions \"WORKING\".",
                 "operationId": "[2][6]UpdateToolchainItemStatus",
                 "parameters": [{
                     "$ref": "#/components/parameters/itemId"
@@ -491,7 +491,7 @@
                     }
                 },
                 "requestBody": {
-                    "description": "App A postet Status „WORKING\" an die BIMSWARM Tool\nchain-API\n* Die itemId muss hier für das Produkt aus einer der\nin Abfrage 1 ausgewählten Toolchaininstanz\nangegeben werden.\n* Der Status muss ein gültiger Status aus der\nEnumeration der ItemStatus sein. An dieser Stelle\nmuss gemäß Statusübergänge \"WORKING\"\ngesendet werden.",
+                    "description": "App A posts status \"WORKING\" to the BIMSWARM tool\nchain API\n* The itemId must be specified here for the product from one of the toolchain instances\nselected in request 1.\n* The status must be a valid status from the item status enumeration. At this point\nmust be sent according to status transitions \"WORKING\".",
                     "required": true,
                     "content": {
                         "text/plain": {
@@ -507,8 +507,8 @@
         },
         "/proxy/api/v0/toolchainservice/ocdecontent/{ocdeContentId}": {
             "get": {
-                "summary": "[3] getOcdeContentDetails",
-                "description": "App A fragt alle ContentIDs von der BIMSWARM\nOpenCDE ab\n* die ocdeContentIds werden im ActivityItem für\njeden eingehenden und ausgehenden Datenfluss\nhinterlegt. Die Abfrage der OcdeContents liefert die\nfür die Dateiübertragung relevante externe ID\nzurück. Diese wird für die Abfragen 4 und 5\nbenötigt.",
+                "summary": "[3] GetOcdeContentDetails",
+                "description": "App A queries all ContentIDs from the BIMSWARM\nOpenCDE\n* the ocdeContentIds are stored in the ActivityItem for every incoming and outgoing flow\n. The OcdeContents request returns the\n external ID\nrelevant to the file transfer. This is needed for requests 4 and 5.",
                 "operationId": "[3]getOcdeContentDetails",
                 "parameters": [{
                     "$ref": "#/components/parameters/ocdeContentId"
@@ -534,8 +534,8 @@
         },
         "/cde/containers/{containerId}/contents/{contentId}/attachment": {
             "get": {
-                "summary": "[4] getAttachmentFromOcdeContent",
-                "description": "App A führt GET auf der BIMSWARM OpenCDE aus und\nerhält somit die nötigen Eingangsdateien\n* Die ContainerID ist in der Toolchaininstanz\nhinterlegt.\n* Die contentID entstammt aus der Abfrage 3.",
+                "summary": "[4] GetAttachmentFromOcdeContent",
+                "description": "App A executes GET on the BIMSWARM OpenCDE and thus receives the necessary input files\n* The containerID is stored in the toolchain instance\n* The contentID comes from request 3.",
                 "operationId": "[4]getAttachmentFromOcdeContent",
                 "parameters": [{
                         "$ref": "#/components/parameters/containerId"
@@ -546,7 +546,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "[4] getAttachmentFromOcdeContent",
+                        "description": "[4] GetAttachmentFromOcdeContent",
                         "content": {
                             "text/plain; charset=utf-8": {
                                 "schema": {}
@@ -556,8 +556,8 @@
                 }
             },
             "post": {
-                "summary": "[5] postAttachmentToOcdeContent",
-                "description": "App A postet Ausgangsdateien in die jeweils vorbereiteten\nContents auf der BIMSWARM OpenCDE\n* Die ContainerID ist in der Toolchaininstanz\nhinterlegt.\n* Die contentID entstammt aus der Abfrage 3.",
+                "summary": "[5] PostAttachmentToOcdeContent",
+                "description": "App A posts output files to the respective prepared\nContents on the BIMSWARM OpenCDE\n* The containerID is stored in the toolchain instance\nhintermediately.\n* The contentID comes from request 3.",
                 "operationId": "[5]postAttachmentToOcdeContent",
                 "parameters": [{
                         "name": "containerId",
@@ -586,7 +586,7 @@
                         "headers": {}
                     },
                     "201": {
-                        "description": "[5] postAttachmentToOcdeContent",
+                        "description": "[5] PostAttachmentToOcdeContent",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -608,7 +608,7 @@
                     }
                 },
                 "requestBody": {
-                    "description": "App A postet Ausgangsdateien in die jeweils vorbereiteten\nContents auf der BIMSWARM OpenCDE\n* Die ContainerID ist in der Toolchaininstanz\nhinterlegt.\n* Die contentID entstammt aus der Abfrage 3.",
+                    "description": "App A posts output files to the respective prepared\nContents on the BIMSWARM OpenCDE\n* The containerID is stored in the toolchain instance\nhintermediately.\n* The contentID comes from request 3.",
                     "required": true,
                     "content": {
                         "multipart/form-data": {
